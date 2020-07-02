@@ -1,4 +1,2 @@
 gameType,gameName,startDate,endDate,realPositionX,realPositionY,userId,email,firstName,lastName,placedX,placedY,difference
-football,game test,Fri Jun 19 2020,Fri Jul 10 2020,150,80,"""5ee7244c67fdff2381e2d9fc""",v_andriichuk@felixin.io,Vitalii,Andriichul,96,175,8.74
-football,game test,Fri Jun 19 2020,Fri Jul 10 2020,150,80,"""5efc3915578c0a18ac31fac7""",p_fanin@felixin.io,Pavel,Fanin,135,309,18.36
-football,game test,Fri Jun 19 2020,Fri Jul 10 2020,150,80,"""5efc84cc3239e2545459b914""",dyachenko664@gmail.com,Alexander,Diachenko,382,599,45.48
+football,FootballGame,Thu Jul 02 2020,Fri Jul 03 2020,150,150,"""5efc3915578c0a18ac31fac7""",p_fanin@felixin.io,Pavel,Fanin,251,678,43.01

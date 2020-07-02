@@ -44,8 +44,8 @@ export class AuthService {
 
       const msg2 = {
         to: `${user.email}`,
-        from: "a_diachenko@felixin.io",
-        subject: "Spot The Ball support team",
+        from: "develop@webcentriq.com",
+        subject: "Spot That Ball support team",
         text: "Your registration credentials",
         html: `
         <html>
@@ -58,7 +58,7 @@ export class AuthService {
               <p class="Unsubscribe--senderName"
                 style="font-size:18px;line-height:20px"
               >
-                Sent by: Spot the ball
+                Sent by: Spot that ball
               </p>
               <p class="Unsubscribe--senderName"
                 style="font-size:14px;line-height:20px"

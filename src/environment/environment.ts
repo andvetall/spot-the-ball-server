@@ -23,4 +23,4 @@ class Environment {
 }
 export const Environments = new Environment();
 
-export const api_key = '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';
+export const api_key = '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';
