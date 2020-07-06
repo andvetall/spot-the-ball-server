@@ -47,8 +47,13 @@ export class GamesService {
   }
 
   async findOneById(gameId): Promise<any> {
-    const id = ObjectId(gameId);
-    const game = await GameModel.findById(id);
-    return game;
+    try {
+      const id = ObjectId(gameId);
+      const game = await GameModel.findById(id);
+      return game;
+      
+    } catch (err) {
+      console.log(err);
+    }      
   }
 }

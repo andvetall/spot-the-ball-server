@@ -1,2 +1,3 @@
-gameType,gameName,startDate,endDate,realPositionX,realPositionY,userId,email,firstName,lastName,placedX,placedY,difference
-football,FootballGame,Thu Jul 02 2020,Fri Jul 03 2020,150,150,"""5efc3915578c0a18ac31fac7""",p_fanin@felixin.io,Pavel,Fanin,251,678,43.01
+gameType,gameName,startDate,endDate,realPositionX,realPositionY,userId,email,firstName,lastName,placedX,placedY,score
+football,game,Wed Jul 01 2020,Wed Jul 08 2020,344,343,"""5e130f47ff94b20094e337ad""",1edgeconnect.project@gmail.com,,,391,257,92.16
+football,game,Wed Jul 01 2020,Wed Jul 08 2020,344,343,"""5efeefe5d6a5c6482ed14852""",dyachenko664@gmail.com,Alexander,Diachenko,413,44,75.45

@@ -43,10 +43,10 @@ export class ResultService {
                 lastName: elem.user.lastName,
                 placedX: elem.position.x,
                 placedY: elem.position.y,
-                difference: elem.difference,
+                score: elem.difference,
               };
               sampleData.push(resultObj);
-              sampleData.sort((a, b) => a.difference - b.difference);
+              sampleData.sort((a, b) => b.difference - a.difference);
             }
           const csv = new ObjectsToCsv(sampleData);
           await csv.toDisk("./src/game-result.csv", {
