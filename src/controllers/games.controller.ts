@@ -37,7 +37,7 @@ export class GamesController implements Controller {
     const feature = await this.gameService.addOneImage(request.body)
     return response.send(feature);
   }
-
+  
   async updateGame(
     request: RequestPost<any>,
     response: ResponseBase<any>
