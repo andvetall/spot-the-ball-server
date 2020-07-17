@@ -27,8 +27,6 @@ export class ResultService {
             return console.log(err);
           } else
             for (const elem of res) {
-              let test = new Map()
-              test.set('difference%', elem.difference)
 
               let resultObj = {
                 gameType: elem.game.gameType,
@@ -46,8 +44,9 @@ export class ResultService {
                 score: elem.difference,
               };
               sampleData.push(resultObj);
-              sampleData.sort((a, b) => b.difference - a.difference);
+              sampleData.sort((a, b) => b.score - a.score)
             }
+            
           const csv = new ObjectsToCsv(sampleData);
           await csv.toDisk("./src/game-result.csv", {
             append: true,
