@@ -1,22 +1,27 @@
-import { User } from './../interfaces/user.interface';
+import { User } from "./../interfaces/user.interface";
 import { inject, injectable } from "inversify";
 import { HashEncrypter } from "common/hash-encrypter";
 import { model } from "mongoose";
 import { UserSchema } from "schemas/user.schema";
-import { JwtHelper } from 'common';
-import { RequestSchema } from 'schemas/request.schema';
+import { JwtHelper } from "common";
+import { RequestSchema } from "schemas/request.schema";
 export const UserModel = model("users", UserSchema);
 export const RequestModel = model("request", RequestSchema);
-const nodemailer = require('nodemailer');
-const smtpTransport = require('nodemailer-smtp-transport');
-const transporter = nodemailer.createTransport(smtpTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
-  auth: {
-    user: 'testspotball@gmail.com',
-    pass: 'alex123456789!'
-  }
-}));
+const ObjectsToCsv = require("objects-to-csv");
+const fs = require("fs");
+const path = "./src/users-list.csv";
+const nodemailer = require("nodemailer");
+const smtpTransport = require("nodemailer-smtp-transport");
+const transporter = nodemailer.createTransport(
+  smtpTransport({
+    service: "gmail",
+    host: "smtp.gmail.com",
+    auth: {
+      user: "testspotball@gmail.com",
+      pass: "alex123456789!",
+    },
+  })
+);
 @injectable()
 export class UserService {
   constructor(
@@ -29,7 +34,7 @@ export class UserService {
       email: email,
     });
   }
-  
+
   async addNewUser(user): Promise<any> {
     try {
       const unhashedPassword = user.password;
@@ -37,7 +42,7 @@ export class UserService {
       user.password = hashedPassword;
       let userData = user;
       const mailOptions = {
-        from: 'testspotball@gmail.com',
+        from: "testspotball@gmail.com",
         to: `${user.email}`,
         subject: "Spot That Ball support team",
         text: "Your registration credentials",
@@ -64,9 +69,9 @@ export class UserService {
             </div>
           </body>
         </html>
-        `
+        `,
       };
-      await transporter.sendMail(mailOptions, function(error, info){
+      await transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           return;
         }
@@ -82,7 +87,7 @@ export class UserService {
     try {
       const authContext = this._jwtHelper.authenticate(user);
       const mailOptions = {
-        from: 'testspotball@gmail.com',
+        from: "testspotball@gmail.com",
         to: `${user.email}`,
         subject: "Spot That Ball support team",
         text: "Your registration credentials",
@@ -112,9 +117,9 @@ export class UserService {
             </div>
           </body>
         </html>
-        `
+        `,
       };
-      await transporter.sendMail(mailOptions, function(error, info){
+      await transporter.sendMail(mailOptions, function (error, info) {
         if (error) {
           return;
         }
@@ -148,13 +153,15 @@ export class UserService {
   }
 
   async deleteRequest(request) {
-    let res = await RequestModel.findOneAndDelete(request)
-    return res
+    let res = await RequestModel.findOneAndDelete(request);
+    return res;
   }
 
   async sendRequest(newUser): Promise<any> {
     try {
-      let newRequest = await RequestModel.create(Object.assign({opened: true, _id: null}, newUser))
+      let newRequest = await RequestModel.create(
+        Object.assign({ opened: true, _id: null }, newUser)
+      );
       return newRequest;
     } catch (err) {
       console.log(err.message);
@@ -175,5 +182,34 @@ export class UserService {
   async getAllUsers(): Promise<any> {
     const usersList = await UserModel.find();
     return usersList;
+  }
+
+  async createUsersCsv(): Promise<any> {
+    try {
+      await fs.unlink(path, (err) => {
+        if (err) {
+          console.error(err);
+          return;
+        }
+      });
+      let sampleData = [];
+      const resultSCV = await UserModel.find();
+      resultSCV.forEach((elem: any) => {
+        let resultObj = {
+          email: elem.email,
+          firstName: elem.firstName,
+          lastName: elem.lastName,
+          gameType: elem.gameType,
+        };
+        sampleData.push(resultObj);
+      });
+      const csv = new ObjectsToCsv(sampleData);
+      await csv.toDisk("./src/users-list.csv", {
+        append: true,
+      });
+      return true;
+    } catch (err) {
+      return false;
+    }
   }
 }

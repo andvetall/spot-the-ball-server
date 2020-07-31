@@ -17,6 +17,12 @@ export class Routes {
       res.header("Access-Control-Allow-Origin", "*");
       res.download(filepath);
     })
+    
+    app.route('/usersCsv').get((req,res,next) => {
+      const filepath = path.join(__dirname, '../users-list.csv');
+      res.header("Access-Control-Allow-Origin", "*");
+      res.download(filepath);
+    })
 
     for (const controller of controllers) {
       const routes = controller.routes();

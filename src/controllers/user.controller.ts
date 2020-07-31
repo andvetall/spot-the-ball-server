@@ -14,6 +14,7 @@ export class UserController implements Controller {
     this.sendRequest = this.sendRequest.bind(this);
     this.getAllRequests = this.getAllRequests.bind(this);
     this.deleteRequest = this.deleteRequest.bind(this);
+    this.createUsersCsv = this.createUsersCsv.bind(this);
   }
   async addUser(
     request: RequestPost<any>, 
@@ -106,6 +107,19 @@ export class UserController implements Controller {
     return response.send(res);
   }
 
+
+  async createUsersCsv(
+    request: RequestPost<any>,
+    response: ResponseBase<any>
+  ) {
+      const csv = await this._userService.createUsersCsv();
+      // let resBody = {
+      //   scvCreated: csv
+      // }
+      return response.send(csv);
+  }
+
+
   routes(): RouteHandler[] {
     const handlers: RouteHandler[] = [];
     const prefix = "user";
@@ -148,6 +162,11 @@ export class UserController implements Controller {
       route: `/${prefix}/deleteRequest`,
       handlers: [<any>this.deleteRequest],
       type: "POST"
+    });
+    handlers.push({
+      route: `/${prefix}/createUsersCsv`,
+      handlers: [<any>this.createUsersCsv],
+      type: "GET"
     });
     return handlers;
   }
