@@ -12,6 +12,8 @@ export class ResultService {
 
   async createCsv(id): Promise<any> {
     try {
+      console.log(id);
+      
       await fs.unlink(path, (err) => {
         if (err) {
           console.error(err);

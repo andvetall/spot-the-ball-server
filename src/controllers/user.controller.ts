@@ -10,6 +10,10 @@ export class UserController implements Controller {
     this.deleteUser = this.deleteUser.bind(this);
     this.getAllUsers = this.getAllUsers.bind(this);
     this.updateUserInfo = this.updateUserInfo.bind(this);
+    this.inviteUser = this.inviteUser.bind(this);
+    this.sendRequest = this.sendRequest.bind(this);
+    this.getAllRequests = this.getAllRequests.bind(this);
+    this.deleteRequest = this.deleteRequest.bind(this);
   }
   async addUser(
     request: RequestPost<any>, 
@@ -54,6 +58,54 @@ export class UserController implements Controller {
     return response.send(usersList)
   }
 
+  async inviteUser(
+    request: RequestPost<any>,
+    response: ResponseBase<any>
+  ) {
+    const userExists = await this._userService.findOneUserByEmail(request.body.email)
+    if(userExists) {
+      throw new ApplicationError("User already exists");
+    }
+    const newUser = await this._userService.inviteUser(request.body);
+    return response.send(newUser);
+  }
+
+  async sendRequest (
+    request: RequestPost<any>,
+    response: ResponseBase<any>
+  ) {
+    const requestExists = await this._userService.findOneRequestByEmail(request.body.email)
+    if(requestExists && requestExists.opened) {
+      throw new ApplicationError("You’ve already sent the request for this email address.");
+    }
+    const userExists = await this._userService.findOneUserByEmail(request.body.email);
+    if(userExists){
+      throw new ApplicationError(`Request failed! User ${request.body.email} already exists`);
+    }
+    if(requestExists) {
+      throw new ApplicationError("Something went wrong");
+    }
+    const newRequest = await this._userService.sendRequest(request.body);
+    return response.send(newRequest);
+  }
+
+  async getAllRequests(
+    request: RequestPost<any>,
+    response: ResponseBase<any>
+  ) {
+    const res = await this._userService.getAllRequests();
+    return response.send(res);
+  }
+
+  async deleteRequest(
+    request: RequestPost<any>,
+    response: ResponseBase<any>
+  ) {
+    const requestToDelete = await this._userService.findOneRequestByEmail(request.body.email);
+    const res = await this._userService.deleteRequest(requestToDelete)
+    return response.send(res);
+  }
+
   routes(): RouteHandler[] {
     const handlers: RouteHandler[] = [];
     const prefix = "user";
@@ -77,7 +129,27 @@ export class UserController implements Controller {
       handlers: [<any>this.getAllUsers],
       type: "GET"
     });
+    handlers.push({
+      route: `/${prefix}/inviteUser`,
+      handlers: [<any>this.inviteUser],
+      type: "POST"
+    });
+    handlers.push({
+      route: `/${prefix}/sendRequest`,
+      handlers: [<any>this.sendRequest],
+      type: "POST"
+    });
+    handlers.push({
+      route: `/${prefix}/getAllRequests`,
+      handlers: [<any>this.getAllRequests],
+      type: "GET"
+    });
+    handlers.push({
+      route: `/${prefix}/deleteRequest`,
+      handlers: [<any>this.deleteRequest],
+      type: "POST"
+    });
     return handlers;
   }
-
+  
 }
