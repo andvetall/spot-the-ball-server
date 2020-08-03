@@ -12,8 +12,6 @@ export class ResultService {
 
   async createCsv(id): Promise<any> {
     try {
-      console.log(id);
-      
       await fs.unlink(path, (err) => {
         if (err) {
           console.error(err);
@@ -29,26 +27,27 @@ export class ResultService {
             return console.log(err);
           } else
             for (const elem of res) {
+              if( elem.user && elem.game) {
+                let resultObj = {
+                  gameType: elem.game.gameType,
+                  gameName: elem.game.title,
+                  startDate: new Date(elem.game.dateFrom).toDateString(),
+                  endDate: new Date(elem.game.dateTo).toDateString(),
+                  realPositionX: elem.game.positionX,
+                  realPositionY: elem.game.positionY,
+                  userId: elem.user._id,
+                  email: elem.user.email,
+                  firstName: elem.user.firstName,
+                  lastName: elem.user.lastName,
+                  placedX: elem.position.x,
+                  placedY: elem.position.y,
+                  score: elem.difference,
+                };
+                sampleData.push(resultObj);
+                sampleData.sort((a, b) => b.score - a.score)
+              }
 
-              let resultObj = {
-                gameType: elem.game.gameType,
-                gameName: elem.game.title,
-                startDate: new Date(elem.game.dateFrom).toDateString(),
-                endDate: new Date(elem.game.dateTo).toDateString(),
-                realPositionX: elem.game.positionX,
-                realPositionY: elem.game.positionY,
-                userId: elem.user._id,
-                email: elem.user.email,
-                firstName: elem.user.firstName,
-                lastName: elem.user.lastName,
-                placedX: elem.position.x,
-                placedY: elem.position.y,
-                score: elem.difference,
-              };
-              sampleData.push(resultObj);
-              sampleData.sort((a, b) => b.score - a.score)
             }
-            
           const csv = new ObjectsToCsv(sampleData);
           await csv.toDisk("./src/game-result.csv", {
             append: true,
