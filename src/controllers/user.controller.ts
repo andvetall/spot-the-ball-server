@@ -102,8 +102,8 @@ export class UserController implements Controller {
     request: RequestPost<any>,
     response: ResponseBase<any>
   ) {
-    const requestToDelete = await this._userService.findOneRequestByEmail(request.body.email);
-    const res = await this._userService.deleteRequest(requestToDelete)
+    const requestToDelete = await this._userService.findOneRequestByEmail(request.params.email);
+    const res = await this._userService.deleteRequest(requestToDelete._id)
     return response.send(res);
   }
 
@@ -159,9 +159,9 @@ export class UserController implements Controller {
       type: "GET"
     });
     handlers.push({
-      route: `/${prefix}/deleteRequest`,
+      route: `/${prefix}/deleteRequest/:email`,
       handlers: [<any>this.deleteRequest],
-      type: "POST"
+      type: "GET"
     });
     handlers.push({
       route: `/${prefix}/createUsersCsv`,

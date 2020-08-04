@@ -148,12 +148,18 @@ export class UserService {
     });
   }
 
+  async findOneRequestByID(id): Promise<any> {
+    return RequestModel.findOne({
+      _id: id,
+    });
+  }
+
   async getAllRequests(): Promise<any> {
     return await RequestModel.find();
   }
 
-  async deleteRequest(request) {
-    let res = await RequestModel.findOneAndDelete(request);
+  async deleteRequest(id) {
+    let res = await RequestModel.findOneAndDelete({_id: id});
     return res;
   }
 
