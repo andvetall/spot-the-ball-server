@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport(smtpTransport({
   service: 'gmail',
   host: 'smtp.gmail.com',
   auth: {
-    user: 'testspotball@gmail.com',
-    pass: 'alex123456789!'
+    user: 'puckhunt123@gmail.com',
+    pass: 'PuckHunt123!!!'
   }
 }));
 @injectable()

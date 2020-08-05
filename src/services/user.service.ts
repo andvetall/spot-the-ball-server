@@ -17,8 +17,8 @@ const transporter = nodemailer.createTransport(
     service: "gmail",
     host: "smtp.gmail.com",
     auth: {
-      user: "testspotball@gmail.com",
-      pass: "alex123456789!",
+      user: "puckhunt123@gmail.com",
+      pass: "PuckHunt123!!!",
     },
   })
 );
@@ -42,7 +42,7 @@ export class UserService {
       user.password = hashedPassword;
       let userData = user;
       const mailOptions = {
-        from: "testspotball@gmail.com",
+        from: "puckhunt123@gmail.com",
         to: `${user.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -87,7 +87,7 @@ export class UserService {
     try {
       let senderName = `${user.sender.firstName.replace(user.sender.firstName.split('')[0],  user.sender.firstName.split('')[0].toLocaleUpperCase())} ${user.sender.lastName.replace(user.sender.lastName.split('')[0],  user.sender.lastName.split('')[0].toLocaleUpperCase())}`
       const mailOptions = {
-        from: "testspotball@gmail.com",
+        from: "puckhunt123@gmail.com",
         to: `${user.userEmail.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
