@@ -44,7 +44,7 @@ export class UserService {
       const mailOptions = {
         from: "testspotball@gmail.com",
         to: `${user.email}`,
-        subject: "Spot That Ball support team",
+        subject: "Puck Hunt support team",
         text: "Your registration credentials",
         html: `
         <html>
@@ -57,7 +57,7 @@ export class UserService {
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
-                  Sent by: Spot that ball
+                  Sent by: Puck Hunt
                 </p>
                 <p class="Unsubscribe--senderName"
                   style="font-size:14px;line-height:20px"
@@ -85,11 +85,11 @@ export class UserService {
 
   async inviteUser(user): Promise<any> {
     try {
-      const authContext = this._jwtHelper.authenticate(user);
+      let senderName = `${user.sender.firstName.replace(user.sender.firstName.split('')[0],  user.sender.firstName.split('')[0].toLocaleUpperCase())} ${user.sender.lastName.replace(user.sender.lastName.split('')[0],  user.sender.lastName.split('')[0].toLocaleUpperCase())}`
       const mailOptions = {
         from: "testspotball@gmail.com",
-        to: `${user.email}`,
-        subject: "Spot That Ball support team",
+        to: `${user.userEmail.email}`,
+        subject: "Puck Hunt support team",
         text: "Your registration credentials",
         html: `
         <html>
@@ -102,16 +102,18 @@ export class UserService {
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
-                  Sent by: Spot that ball
+                  Sent by: Puck Hunt
+                </p>
+                <p class="Unsubscribe--senderName"
+                  style="font-size:18px;line-height:20px"
+                >
+                ${senderName} is playing Puck Hunt and asked that we invite you to play too
+
                 </p>
                 <p class="Unsubscribe--senderName"
                   style="font-size:14px;line-height:20px"
                 >
-                You are one of the first to be introduced to our game because you were referred by a friend.
-                We are building a company and brand from scratch. At the beinning we are hoping to have your involvement while providing you some clean simple fun.
-                We want you to play our Puck Hunt game for a few minutes once a week. Its a very basic trial version and honestly its not very user friendly yet. You need to use it on your PC not your mobile and you dont get to chose your password yet.
-                Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then.
-                If you are up for it please add your name and email to the form at this link http://stb.webcentriq.com/#/invite;token=${authContext.token}
+                You are one of the first to be introduced to our game because you were referred by a friend. We are building a company and brand from scratch. At the beginning, we are hoping to have your involvement while providing you some clean simple fun. We want you to play our Puck Hunt game for a few minutes once a week. It's a very basic trial version and honestly it's not very user friendly yet. You need to use it on your PC not your mobile and you don't get to choose your password yet. Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then. If you are up for it please add your name and email and favorite team to the form at this link. http://stb.webcentriq.com/#/invite
                 </p>
               </div>
             </div>
@@ -205,6 +207,7 @@ export class UserService {
           email: elem.email,
           firstName: elem.firstName,
           lastName: elem.lastName,
+          favoriteTeam: elem.favoriteTeam,
           gameType: elem.gameType,
         };
         sampleData.push(resultObj);

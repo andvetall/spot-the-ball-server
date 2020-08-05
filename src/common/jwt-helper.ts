@@ -5,10 +5,11 @@ import { injectable } from "inversify";
 
 @injectable()
 export class JwtHelper {
-  authenticate(user: AuthUserModel): AuthResponseModel {
-    const authContext: AuthContextModel = {
+  authenticate(user: any): AuthResponseModel {
+    const authContext: any = {
       id: user.id,
-      fullName: user.fullName,
+      firstName: user.firstName,
+      lastName: user.lastName,
       email: user.email,
       role: user.role,
       gameType: user.gameType

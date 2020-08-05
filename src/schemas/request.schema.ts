@@ -7,7 +7,8 @@ export const RequestSchema = new Schema(
     email: String,
     firstName: String,
     lastName: String,
-    opened: Boolean
+    opened: Boolean,
+    favoriteTeam: String
   },
   {
     collection: "requests",

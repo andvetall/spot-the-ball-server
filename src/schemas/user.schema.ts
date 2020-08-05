@@ -8,6 +8,7 @@ export const UserSchema = new Schema(
     password: String,
     firstName: String,
     lastName: String,
+    favoriteTeam: String,
     role: String,
     gameType: String,
   },

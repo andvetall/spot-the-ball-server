@@ -29,6 +29,7 @@ export class ResultService {
             for (const elem of res) {
               if( elem.user && elem.game) {
                 let resultObj = {
+                  place: null,
                   gameType: elem.game.gameType,
                   gameName: elem.game.title,
                   startDate: new Date(elem.game.dateFrom).toDateString(),
@@ -45,6 +46,9 @@ export class ResultService {
                 };
                 sampleData.push(resultObj);
                 sampleData.sort((a, b) => b.score - a.score)
+                sampleData.map((elem, index) => {
+                  elem.place = index + 1;
+                })
               }
 
             }
