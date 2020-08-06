@@ -200,13 +200,17 @@ export class UserService {
           return;
         }
       });
+      function capitalizeFirstLetter(string) {
+        const stringToLowCase = string.toLocaleLowerCase();
+        return stringToLowCase.charAt(0).toUpperCase() + stringToLowCase.slice(1);
+      }
       let sampleData = [];
       const resultSCV = await UserModel.find();
       resultSCV.forEach((elem: any) => {
         let resultObj = {
           email: elem.email,
-          firstName: elem.firstName,
-          lastName: elem.lastName,
+          firstName: capitalizeFirstLetter(elem.firstName),
+          lastName: capitalizeFirstLetter(elem.lastName),
           favoriteTeam: elem.favoriteTeam,
           gameType: elem.gameType,
         };
