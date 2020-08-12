@@ -52,18 +52,43 @@ export class UserService {
             <title></title>
           </head>
           <body>
-            <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" style="background: #33cc8e1a; color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5">
+            <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" 
+            style="
+              color: #444444;
+              font-size: 12px;
+              line-height: 20px;
+              padding: 16px 16px 16px 16px;
+              text-align: Center;
+              width: 60%;
+              margin: 0 auto;
+            " 
+            data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5">
               <div class="Unsubscribe--addressLine">
+              <img style="
+                cursor: auto;
+                width: 50%;
+              " 
+              src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
-                  Sent by: Puck Hunt
+                  Sent by: <b>Puck Hunt</b>
                 </p>
                 <p class="Unsubscribe--senderName"
                   style="font-size:14px;line-height:20px"
                 >
-                  You are successfully registered to game your password is - ${unhashedPassword}, your login is ${user.email}.
-                  Use it here http://stb.webcentriq.com/#/login
+                  You are successfully registered to game! <br><b>Your password is:</b> ${unhashedPassword} <br><b>Your login is:</b> ${user.email}
+                </p>
+                <p style="margin-top: 35px;">
+                  <a style="
+                  background: #00aae8;
+                  border: none;
+                  padding: 8px;
+                  text-decoration: none;
+                  border-radius: 5px;
+                  color: white;
+                  margin-top: 25px;
+                  " href="http://stb.webcentriq.com/#/login">Sign In</a>
                 </p>
               </div>
             </div>
@@ -97,32 +122,52 @@ export class UserService {
             <title></title>
           </head>
           <body>
-            <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" style="background: #33cc8e1a; color:#444444; font-size:12px; line-height:20px; padding:16px 16px 16px 16px; text-align:Center;" data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5">
+            <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" 
+            style="
+              color: #444444;
+              font-size: 12px;
+              line-height: 20px;
+              padding: 16px 16px 16px 16px;
+              text-align: Center;
+              width: 60%;
+              margin: 0 auto;
+            " 
+            data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5">
               <div class="Unsubscribe--addressLine">
+                <img style="
+                  cursor: auto;
+                  width: 50%;
+                " 
+                src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
-                  Sent by: Puck Hunt
-                </p>
-                <p class="Unsubscribe--senderName"
-                  style="font-size:18px;line-height:20px"
-                >
-                ${senderName} is playing Puck Hunt and asked that we invite you to play too
+                <b>${senderName}</b> Invited you to play!
 
                 </p>
                 <p class="Unsubscribe--senderName"
                   style="font-size:14px;line-height:20px"
                 >
-                You are one of the first to be introduced to our game because you were referred by a friend. We are building a company and brand from scratch. At the beginning, we are hoping to have your involvement while providing you some clean simple fun. We want you to play our Puck Hunt game for a few minutes once a week. It's a very basic trial version and honestly it's not very user friendly yet. You need to use it on your PC not your mobile and you don't get to choose your password yet. Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then. If you are up for it please add your name and email and favorite team to the form. 
+                You are one of the first to be introduced to our game because you were referred by a friend.
+                </p>
+                <p class="Unsubscribe--senderName"
+                style="font-size:14px;line-height:20px"
+                >
+                <a href="#">About Us</a>
+                </p>
+                <p class="Unsubscribe--senderName"
+                style="font-size:14px;line-height:20px"
+                >
+                We are building a company and brand from scratch. At the beginning, we are hoping to have your involvement while providing you some clean simple fun. We want you to play our Puck Hunt game for a few minutes once a week. It's a very basic trial version and honestly it's not very user friendly yet. You need to use it on your PC not your mobile and you don't get to choose your password yet. Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then. If you are up for it please add your name and email and favorite team to the form. 
                 </p>
                 <a style="
-                background: #8ebbff;
-                cursor: pointer;
+                background: #00aae8;
                 border: none;
                 padding: 8px;
                 text-decoration: none;
                 border-radius: 5px;
-                " href="http://stb.webcentriq.com/#/invite">Sign Up</a>
+                color: white;
+                " href="http://stb.webcentriq.com/#/invite">Start Playing</a>
               </div>
             </div>
           </body>
