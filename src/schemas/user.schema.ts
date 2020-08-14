@@ -11,6 +11,7 @@ export const UserSchema = new Schema(
     favoriteTeam: String,
     role: String,
     gameType: String,
+    referredBy: Object,
   },
   {
     collection: "users",

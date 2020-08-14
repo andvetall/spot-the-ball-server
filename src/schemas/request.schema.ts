@@ -8,7 +8,8 @@ export const RequestSchema = new Schema(
     firstName: String,
     lastName: String,
     opened: Boolean,
-    favoriteTeam: String
+    favoriteTeam: String,
+    referredBy: Object,
   },
   {
     collection: "requests",

@@ -5,6 +5,8 @@ import { model } from "mongoose";
 import { UserSchema } from "schemas/user.schema";
 import { JwtHelper } from "common";
 import { RequestSchema } from "schemas/request.schema";
+import * as jsonwebtoken from "jsonwebtoken";
+import { Environments } from "environment/environment";
 export const UserModel = model("users", UserSchema);
 export const RequestModel = model("request", RequestSchema);
 const ObjectsToCsv = require("objects-to-csv");
@@ -111,6 +113,13 @@ export class UserService {
   async inviteUser(user): Promise<any> {
     try {
       let senderName = `${user.sender.firstName.replace(user.sender.firstName.split('')[0],  user.sender.firstName.split('')[0].toLocaleUpperCase())} ${user.sender.lastName.replace(user.sender.lastName.split('')[0],  user.sender.lastName.split('')[0].toLocaleUpperCase())}`
+      const authContext: any = {
+        senderID: user.sender.id,
+        senderEmail: user.sender.email
+      }
+      const token = jsonwebtoken.sign(authContext, Environments.secret, {
+        expiresIn: Environments.tokenExpiresIn
+      });
       const mailOptions = {
         from: "puckhunt123@gmail.com",
         to: `${user.userEmail.email}`,
@@ -167,7 +176,7 @@ export class UserService {
                 text-decoration: none;
                 border-radius: 5px;
                 color: white;
-                " href="http://stb.webcentriq.com/#/invite">Start Playing</a>
+                " href="http://stb.webcentriq.com/#/invite?token=${token}">Start Playing</a>
               </div>
             </div>
           </body>
@@ -266,6 +275,7 @@ export class UserService {
           lastName: capitalizeFirstLetter(elem.lastName),
           favoriteTeam: elem.favoriteTeam,
           gameType: elem.gameType,
+          referredBy: elem.referredBy ? elem.referredBy.senderEmail : "N/A"
         };
         sampleData.push(resultObj);
       });
