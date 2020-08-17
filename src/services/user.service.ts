@@ -81,6 +81,12 @@ export class UserService {
                 >
                   You are successfully registered to game! <br><b>Your password is:</b> ${unhashedPassword} <br><b>Your login is:</b> ${user.email}
                 </p>
+                <p
+                  class="Unsubscribe--senderName"
+                  style="font-size:18px;line-height:20px"
+                >
+                  You can change your password once you login
+                </p>
                 <p style="margin-top: 35px;">
                   <a style="
                   background: #00aae8;
@@ -167,7 +173,7 @@ export class UserService {
                 <p class="Unsubscribe--senderName"
                 style="font-size:14px;line-height:20px"
                 >
-                We are building a company and brand from scratch. At the beginning, we are hoping to have your involvement while providing you some clean simple fun. We want you to play our Puck Hunt game for a few minutes once a week. It's a very basic trial version and honestly it's not very user friendly yet. You need to use it on your PC not your mobile and you don't get to choose your password yet. Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then. If you are up for it please add your name and email and favorite team to the form. 
+                We are building a company and brand from scratch. At the beginning, we are hoping to have your involvement while providing you some clean simple fun. We want you to play our Puck Hunt game for a few minutes once a week. It's a very basic trial version and honestly it's not very user friendly yet. You need to use it on your PC not your mobile and you don't get to choose your password yet. Please play just for fun, once a week for the next few months and then take a very short survey at the end and we will reward you. You will get free play for the next month while others are paying with chances at prizes worth hundreds of dollars. The site will be better by then. The site is not mobile friendly yet, please view it on your PC for best results. If you are up for it please add your name and email and favorite team to the form. 
                 </p>
                 <a style="
                 background: #00aae8;
