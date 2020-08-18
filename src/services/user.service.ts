@@ -238,6 +238,65 @@ export class UserService {
       let newRequest = await RequestModel.create(
         Object.assign({ opened: true, _id: null }, newUser)
       );
+      let admins = await UserModel.find({role: "admin"})
+      let adminsEmails = admins.map((admin:any) => admin.email)
+      const mailOptions = {
+        from: "puckhunt123@gmail.com",
+        to: adminsEmails,
+        subject: "Puck Hunt support team",
+        text: "Your registration credentials",
+        html: `
+        <html>
+          <head>
+            <title></title>
+          </head>
+          <body>
+            <div data-role="module-unsubscribe" class="module" role="module" data-type="unsubscribe" 
+            style="
+              color: #444444;
+              font-size: 12px;
+              line-height: 20px;
+              padding: 16px 16px 16px 16px;
+              text-align: Center;
+              width: 60%;
+              margin: 0 auto;
+            " 
+            data-muid="4e838cf3-9892-4a6d-94d6-170e474d21e5">
+              <div class="Unsubscribe--addressLine">
+                <img style="
+                  cursor: auto;
+                  width: 50%;
+                " 
+                src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
+                <p class="Unsubscribe--senderName"
+                  style="font-size:18px;line-height:20px"
+                >
+
+                </p>
+                <p class="Unsubscribe--senderName"
+                  style="font-size:14px;line-height:20px"
+                >
+                A new User <b>${newUser.firstName.charAt(0).toUpperCase() + newUser.firstName.slice(1)} ${newUser.lastName.charAt(0).toUpperCase() + newUser.lastName.slice(1)}</b> needs confirmation from you to play Puck Hunt. Sign in and confirm them
+                </p>
+                <a style="
+                background: #00aae8;
+                border: none;
+                padding: 8px;
+                text-decoration: none;
+                border-radius: 5px;
+                color: white;
+                " href="http://stb.webcentriq.com/#/admin/main-dashboard">Sign in</a>
+              </div>
+            </div>
+          </body>
+        </html>
+        `,
+      };
+      await transporter.sendMail(mailOptions, function (error, info) {
+        if (error) {
+          return;
+        }
+      });
       return newRequest;
     } catch (err) {
       console.log(err.message);
