@@ -111,7 +111,7 @@ export class AuthService {
                 border-radius: 5px;
                 color: white;
                 margin-top: 25px;
-                " href="http://stb.webcentriq.com/#/login">Sign In</a>
+                " href="http://puckhunt.com/#/login">Sign In</a>
               </p>
             </div>
           </div>

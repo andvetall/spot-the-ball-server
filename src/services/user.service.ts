@@ -96,7 +96,7 @@ export class UserService {
                   border-radius: 5px;
                   color: white;
                   margin-top: 25px;
-                  " href="http://stb.webcentriq.com/#/login">Sign In</a>
+                  " href="http://puckhunt.com/#/login">Sign In</a>
                 </p>
               </div>
             </div>
@@ -182,7 +182,7 @@ export class UserService {
                 text-decoration: none;
                 border-radius: 5px;
                 color: white;
-                " href="http://stb.webcentriq.com/#/invite?token=${token}">Start Playing</a>
+                " href="http://puckhunt.com/#/invite?token=${token}">Start Playing</a>
               </div>
             </div>
           </body>
@@ -285,7 +285,7 @@ export class UserService {
                 text-decoration: none;
                 border-radius: 5px;
                 color: white;
-                " href="http://stb.webcentriq.com/#/admin/main-dashboard">Sign in</a>
+                " href="http://puckhunt.com/#/admin/main-dashboard">Sign in</a>
               </div>
             </div>
           </body>
