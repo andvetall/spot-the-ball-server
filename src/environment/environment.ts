@@ -15,10 +15,7 @@ class Environment {
     );
   }
   get databaseName(): string {
-    return (
-      process.env.databaseName ||
-      "MyDataBaseName"
-    );
+    return ( process.env.dataBaseDev || 'spotThatBall2' );
   }
 }
 export const Environments = new Environment();
