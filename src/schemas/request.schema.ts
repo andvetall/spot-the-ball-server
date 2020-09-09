@@ -10,6 +10,7 @@ export const RequestSchema = new Schema(
     opened: Boolean,
     favoriteTeam: String,
     referredBy: Object,
+    rate: Number
   },
   {
     collection: "requests",
