@@ -65,7 +65,7 @@ export class AuthService {
     }
     
     const mailOptions = {
-      from: "puckhunt123@gmail.com",
+      from: "puck.hunt.sup@gmail.com",
       to: `${email}`,
       subject: "Puck Hunt support team",
       text: "Your registration credentials",

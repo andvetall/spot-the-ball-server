@@ -44,7 +44,7 @@ export class UserService {
       user.password = hashedPassword;
       let userData = user;
       const mailOptions = {
-        from: "puckhunt123@gmail.com",
+        from: "puck.hunt.sup@gmail.com",
         to: `${user.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -127,7 +127,7 @@ export class UserService {
         expiresIn: Environments.tokenExpiresIn
       });
       const mailOptions = {
-        from: "puckhunt123@gmail.com",
+        from: "puck.hunt.sup@gmail.com",
         to: `${user.userEmail.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -241,7 +241,7 @@ export class UserService {
       let admins = await UserModel.find({role: "admin"})
       let adminsEmails = admins.map((admin:any) => admin.email)
       const mailOptions = {
-        from: "puckhunt123@gmail.com",
+        from: "puck.hunt.sup@gmail.com",
         to: adminsEmails,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
