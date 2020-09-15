@@ -6,7 +6,7 @@ const config = {
     url: "mongodb+srv://dbuser:Qwerty!123@democluster-5xhs4.mongodb.net/test?retryWrites=true&w=majority",
 
     // TODO Change this to your database name:
-    databaseName: "spotThatBall2",
+    databaseName: "MyDataBaseName",
 
     options: {
       useNewUrlParser: true, // removes a deprecation warning when connecting
