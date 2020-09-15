@@ -12,7 +12,8 @@ export class JwtHelper {
       lastName: user.lastName,
       email: user.email,
       role: user.role,
-      gameType: user.gameType
+      gameType: user.gameType,
+      rate: user.rate
     };
     const token = jsonwebtoken.sign(authContext, Environments.secret, {
       expiresIn: Environments.tokenExpiresIn

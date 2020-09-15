@@ -340,7 +340,8 @@ export class UserService {
           lastName: capitalizeFirstLetter(elem.lastName),
           favoriteTeam: elem.favoriteTeam,
           gameType: elem.gameType,
-          referredBy: elem.referredBy ? elem.referredBy.senderEmail : "N/A"
+          referredBy: elem.referredBy ? elem.referredBy.senderEmail : "N/A",
+          rate: elem.rate
         };
         sampleData.push(resultObj);
       });

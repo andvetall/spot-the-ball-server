@@ -12,6 +12,7 @@ export const UserSchema = new Schema(
     role: String,
     gameType: String,
     referredBy: Object,
+    rate: Number
   },
   {
     collection: "users",
