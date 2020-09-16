@@ -11,11 +11,11 @@ export const UserModel = model("users", UserSchema);
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const transporter = nodemailer.createTransport(smtpTransport({
-  service: Environments.emailService,
-  host: Environments.emailHost,
+  service: `${Environments.emailService}`,
+  host: `${Environments.emailHost}`,
   auth: {
-    user: Environments.email,
-    pass: Environments.password
+    user: `${Environments.email}`,
+    pass: `${Environments.password}`
   }
 }));
 
@@ -69,7 +69,7 @@ export class AuthService {
     }
     
     const mailOptions = {
-      from: Environments.email,
+      from: `${Environments.email}`,
       to: `${email}`,
       subject: "Puck Hunt support team",
       text: "Your registration credentials",

@@ -19,11 +19,11 @@ const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const transporter = nodemailer.createTransport(
   smtpTransport({
-    service: Environments.emailService,
-    host: Environments.emailHost,
+    service: `${Environments.emailService}`,
+    host: `${Environments.emailHost}`,
     auth: {
-      user: Environments.email,
-      pass: Environments.password
+      user: `${Environments.email}`,
+      pass: `${Environments.password}`
     }
   })
 );
@@ -47,7 +47,7 @@ export class UserService {
       user.password = hashedPassword;
       let userData = user;
       const mailOptions = {
-        from: Environments.email,
+        from: `${Environments.email}`,
         to: `${user.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -130,7 +130,7 @@ export class UserService {
         expiresIn: Environments.tokenExpiresIn
       });
       const mailOptions = {
-        from: Environments.email,
+        from: `${Environments.email}`,
         to: `${user.userEmail.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -244,7 +244,7 @@ export class UserService {
       let admins = await UserModel.find({role: "admin"})
       let adminsEmails = admins.map((admin:any) => admin.email)
       const mailOptions = {
-        from: Environments.email,
+        from: `${Environments.email}`,
         to: adminsEmails,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
