@@ -7,21 +7,24 @@ import { JwtHelper } from "common";
 import { RequestSchema } from "schemas/request.schema";
 import * as jsonwebtoken from "jsonwebtoken";
 import { Environments } from "environment/environment";
+
 export const UserModel = model("users", UserSchema);
 export const RequestModel = model("request", RequestSchema);
+
 const ObjectsToCsv = require("objects-to-csv");
 const fs = require("fs");
 const path = "./src/users-list.csv";
+
 const nodemailer = require("nodemailer");
 const smtpTransport = require("nodemailer-smtp-transport");
 const transporter = nodemailer.createTransport(
   smtpTransport({
-    service: "gmail",
-    host: "smtp.gmail.com",
+    service: Environments.emailService,
+    host: Environments.emailHost,
     auth: {
-      user: "puck.hunt.sup@gmail.com",
-      pass: "PuckHunt123",
-    },
+      user: Environments.email,
+      pass: Environments.password
+    }
   })
 );
 @injectable()
@@ -44,7 +47,7 @@ export class UserService {
       user.password = hashedPassword;
       let userData = user;
       const mailOptions = {
-        from: "puck.hunt.sup@gmail.com",
+        from: Environments.email,
         to: `${user.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -96,7 +99,7 @@ export class UserService {
                   border-radius: 5px;
                   color: white;
                   margin-top: 25px;
-                  " href="http://puckhunt.com/#/login">Sign In</a>
+                  " href="${Environments.link}/#/login">Sign In</a>
                 </p>
               </div>
             </div>
@@ -127,7 +130,7 @@ export class UserService {
         expiresIn: Environments.tokenExpiresIn
       });
       const mailOptions = {
-        from: "puck.hunt.sup@gmail.com",
+        from: Environments.email,
         to: `${user.userEmail.email}`,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -182,7 +185,7 @@ export class UserService {
                 text-decoration: none;
                 border-radius: 5px;
                 color: white;
-                " href="http://puckhunt.com/#/invite?token=${token}">Start Playing</a>
+                " href="${Environments.link}/#/invite?token=${token}">Start Playing</a>
               </div>
             </div>
           </body>
@@ -241,7 +244,7 @@ export class UserService {
       let admins = await UserModel.find({role: "admin"})
       let adminsEmails = admins.map((admin:any) => admin.email)
       const mailOptions = {
-        from: "puck.hunt.sup@gmail.com",
+        from: Environments.email,
         to: adminsEmails,
         subject: "Puck Hunt support team",
         text: "Your registration credentials",
@@ -285,7 +288,7 @@ export class UserService {
                 text-decoration: none;
                 border-radius: 5px;
                 color: white;
-                " href="http://puckhunt.com/#/admin/main-dashboard">Sign in</a>
+                " href="${Environments.link}/#/admin/main-dashboard">Sign in</a>
               </div>
             </div>
           </body>

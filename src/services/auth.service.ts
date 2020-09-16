@@ -4,17 +4,21 @@ import { ApplicationError } from "common";
 import { HashEncrypter } from "common/hash-encrypter";
 import { model } from "mongoose";
 import { UserSchema } from "schemas/user.schema";
+import { Environments } from "environment/environment";
+
 export const UserModel = model("users", UserSchema);
+
 const nodemailer = require('nodemailer');
 const smtpTransport = require('nodemailer-smtp-transport');
 const transporter = nodemailer.createTransport(smtpTransport({
-  service: 'gmail',
-  host: 'smtp.gmail.com',
+  service: Environments.emailService,
+  host: Environments.emailHost,
   auth: {
-    user: 'puck.hunt.sup@gmail.com',
-    pass: 'PuckHunt123'
+    user: Environments.email,
+    pass: Environments.password
   }
 }));
+
 @injectable()
 export class AuthService {
   constructor(
@@ -65,7 +69,7 @@ export class AuthService {
     }
     
     const mailOptions = {
-      from: "puck.hunt.sup@gmail.com",
+      from: Environments.email,
       to: `${email}`,
       subject: "Puck Hunt support team",
       text: "Your registration credentials",
@@ -111,7 +115,7 @@ export class AuthService {
                 border-radius: 5px;
                 color: white;
                 margin-top: 25px;
-                " href="http://puckhunt.com/#/login">Sign In</a>
+                " href="${Environments.link}/#/login">Sign In</a>
               </p>
             </div>
           </div>

@@ -3,6 +3,7 @@ import * as bodyParser from "body-parser";
 import { Routes } from "./routes/routes";
 import * as cors from "cors";
 import { ErrorMiddleware } from "middlewares/error.middleware.ts";
+require('dotenv').config()
 
 class App {
   public app: express.Application;
