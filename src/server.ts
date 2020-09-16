@@ -4,8 +4,9 @@ import app from "./app";
 import * as https from "https";
 import * as http from "http";
 import * as fs from "fs";
-const httpsPort = 3000;
-const httpPort = 8080;
+const httpsPort = process.env.PORTHttp;
+const httpPort = process.env.PORTHttps;
+
 
 import { Environments } from "environment/environment";
 import { connection, connect } from "mongoose";

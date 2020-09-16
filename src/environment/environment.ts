@@ -1,6 +1,6 @@
 class Environment {
   get secret(): string {
-    return process.env.secret || "secret";
+    return process.env.secret;
   }
   get tokenExpiresIn(): number {
     if (!process.env.tokenExpiresIn) {
@@ -10,14 +10,42 @@ class Environment {
   }
   get connectionString(): string {
     return (
-      process.env.connectionString ||
-      "mongodb+srv://dbuser:Qwerty!123@democluster-5xhs4.mongodb.net/test?retryWrites=true&w=majority"
+      process.env.connectionString
     );
   }
   get databaseName(): string {
-    return ( process.env.dataBaseDev || 'spotThatBall2' );
+    return ( 
+      // process.env.dataBaseProd
+      process.env.dataBaseDev
+      );
+  }
+  get emailService(): string{
+    return (
+      process.env.emailService
+    )
+  }
+  get emailHost(): string{
+    return (
+      process.env.emailHost
+    )
+  }
+  get email(): string{
+    return (
+      // process.env.emailProd
+      process.env.emailDev
+    )
+  }
+  get password(): string{
+    return (
+      // process.env.passwordProd
+      process.env.passwordDev
+    )
+  }
+  get link(): string{
+    return (
+      // process.env.linkProd
+      process.env.linkDev
+    )
   }
 }
 export const Environments = new Environment();
-
-export const api_key = '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';
