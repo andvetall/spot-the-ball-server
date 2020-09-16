@@ -15,8 +15,8 @@ class Environment {
   }
   get databaseName(): string {
     return ( 
-      // process.env.dataBaseProd
-      process.env.dataBaseDev
+      process.env.dataBaseProd
+      // process.env.dataBaseDev
       );
   }
   get emailService(): string{
@@ -31,20 +31,20 @@ class Environment {
   }
   get email(): string{
     return (
-      // process.env.emailProd
-      process.env.emailDev
+      process.env.emailProd
+      // process.env.emailDev
     )
   }
   get password(): string{
     return (
-      // process.env.passwordProd
-      process.env.passwordDev
+      process.env.passwordProd
+      // process.env.passwordDev
     )
   }
   get link(): string{
     return (
-      // process.env.linkProd
-      process.env.linkDev
+      process.env.linkProd
+      // process.env.linkDev
     )
   }
 }
