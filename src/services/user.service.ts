@@ -73,7 +73,7 @@ export class UserService {
                 cursor: auto;
                 width: 50%;
               " 
-              src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
+              src="https://puckhunt.s3-us-west-1.amazonaws.com/Web_Puckhunt_Logo.png"/>
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
@@ -156,7 +156,7 @@ export class UserService {
                   cursor: auto;
                   width: 50%;
                 " 
-                src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
+                src="https://puckhunt.s3-us-west-1.amazonaws.com/Web_Puckhunt_Logo.png"/>
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
@@ -270,7 +270,7 @@ export class UserService {
                   cursor: auto;
                   width: 50%;
                 " 
-                src="https://cdn1.savepice.ru/uploads/2020/8/12/7f69eff98e286f7ee99cecbcd05bc745-full.png"/>
+                src="https://puckhunt.s3-us-west-1.amazonaws.com/Web_Puckhunt_Logo.png"/>
                 <p class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
