@@ -106,6 +106,9 @@ export class AuthService {
               >
                 Your password has been updated! <br><b>Your password is:</b> ${newPassword} <br><b>Your login is:</b> ${email}
               </p>
+              <p class="Unsubscribe--senderName"
+                style="font-size:14px;line-height:20px">
+                Important! Please set an easy to remember password once logged in</p>
               <p style="margin-top: 35px;">
                 <a style="
                 background: #00aae8;
