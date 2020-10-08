@@ -88,7 +88,7 @@ export class UserService {
                   class="Unsubscribe--senderName"
                   style="font-size:18px;line-height:20px"
                 >
-                  You can change your password once you login
+                  You can change your password to something easy to remember once you login
                 </p>
                 <p style="margin-top: 35px;">
                   <a style="
